@@ -749,6 +749,287 @@
 
   /* Divider */
   .section-divider { height: 1px; background: var(--gray-200); margin: 4px 0 28px; }
+
+  /* ===== MOBILE NAV DRAWER ===== */
+  .desktop-only { display: flex; }
+  .mobile-only { display: none; }
+  .mobile-search-bar { display: none; }
+
+  .hamburger-btn {
+    width: 38px; height: 38px;
+    background: var(--gray-100);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 5px;
+    padding: 8px;
+  }
+  .hamburger-btn span {
+    display: block; width: 18px; height: 2px;
+    background: var(--gray-700); border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .hamburger-btn:hover { background: var(--green-50); border-color: var(--green-400); }
+  .hamburger-btn:hover span { background: var(--green-600); }
+
+  .mobile-nav-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5); z-index: 150;
+  }
+  .mobile-nav-overlay.open { display: block; }
+  .mobile-nav-drawer {
+    position: fixed; left: -300px; top: 0; bottom: 0; width: 280px;
+    background: white; z-index: 151;
+    transition: left 0.3s ease;
+    display: flex; flex-direction: column;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.15);
+    overflow-y: auto;
+  }
+  .mobile-nav-drawer.open { left: 0; }
+  .mobile-nav-header {
+    padding: 16px;
+    border-bottom: 1px solid var(--gray-200);
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--green-50);
+  }
+  .mobile-nav-close {
+    width: 32px; height: 32px;
+    background: white; border: 1px solid var(--gray-200);
+    border-radius: 50%; cursor: pointer; font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .mobile-nav-body { padding: 8px 0; }
+  .mobile-nav-item {
+    padding: 14px 20px;
+    font-size: 15px; font-weight: 600;
+    color: var(--gray-700); cursor: pointer;
+    display: flex; align-items: center; gap: 6px;
+    border-bottom: 1px solid var(--gray-100);
+    transition: background 0.15s;
+  }
+  .mobile-nav-item:hover { background: var(--green-50); color: var(--green-700); }
+
+  /* ===== BOTTOM NAV BAR (Mobile) ===== */
+  .bottom-nav {
+    display: none;
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: white;
+    border-top: 1px solid var(--gray-200);
+    z-index: 99;
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+    padding: 6px 0 env(safe-area-inset-bottom, 6px);
+  }
+  .bottom-nav-inner {
+    display: flex; justify-content: space-around; align-items: center;
+  }
+  .bottom-nav-item {
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+    padding: 6px 12px; cursor: pointer;
+    font-size: 10px; font-weight: 600; color: var(--gray-500);
+    border-radius: var(--radius-sm); transition: all 0.15s;
+    min-width: 56px;
+  }
+  .bottom-nav-item svg { width: 20px; height: 20px; }
+  .bottom-nav-item.active { color: var(--green-600); }
+  .bottom-nav-item:hover { color: var(--green-600); }
+  .bottom-nav-cart { position: relative; }
+  .bottom-cart-badge {
+    position: absolute; top: 2px; right: 8px;
+    background: var(--orange-400); color: white;
+    border-radius: 50%; width: 16px; height: 16px;
+    font-size: 9px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* ===== TABLET — 768px to 1024px ===== */
+  @media (max-width: 1024px) {
+    main { padding: 16px; }
+
+    .hero-section { grid-template-columns: 1fr; }
+    .hero-sidebar {
+      flex-direction: row;
+      gap: 10px;
+    }
+    .hero-quick-card { flex: 1; }
+    .hero-carousel { height: 200px; }
+    .hero-title { font-size: 24px; }
+
+    .categories-grid { grid-template-columns: repeat(4, 1fr); }
+    .products-row { grid-template-columns: repeat(3, 1fr); }
+    .why-us { grid-template-columns: repeat(2, 1fr); }
+    .stats-strip { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .blog-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .upload-rx-section { flex-wrap: wrap; gap: 20px; }
+    .upload-steps { margin-left: 0; flex-direction: row; flex-wrap: wrap; gap: 10px; }
+
+    .footer-inner { grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+    .footer-brand { grid-column: 1 / -1; }
+
+    .nav-inner { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .nav-inner::-webkit-scrollbar { display: none; }
+  }
+
+  /* ===== MOBILE — up to 767px ===== */
+  @media (max-width: 767px) {
+    .announcement-bar { font-size: 11px; padding: 6px 12px; }
+
+    /* Header mobile layout */
+    .header-top {
+      padding: 10px 14px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .logo-text .tagline { display: none; }
+    .logo-text .brand { font-size: 16px; }
+    .logo-icon { width: 32px; height: 32px; }
+    .logo-icon svg { width: 18px; height: 18px; }
+
+    /* Hide desktop search in header, show mobile search below */
+    .search-bar { display: none; }
+    .location-picker { display: none; }
+    .desktop-only { display: none !important; }
+    .mobile-only { display: flex !important; }
+    .mobile-search-bar {
+      display: block;
+      padding: 8px 14px 10px;
+      border-bottom: 1px solid var(--gray-100);
+      background: white;
+    }
+    .mobile-search-bar .search-bar { display: flex; }
+    .mobile-search-bar .search-btn { padding: 0 14px; }
+    .search-btn span { display: none; }
+
+    /* Nav scrollable on mobile */
+    nav { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    nav::-webkit-scrollbar { display: none; }
+    .nav-inner { padding: 0 10px; min-width: max-content; }
+    .nav-item { padding: 10px 12px; font-size: 12.5px; }
+
+    /* Main */
+    main { padding: 12px 12px 80px; } /* bottom padding for bottom nav */
+
+    /* Hero */
+    .hero-section { grid-template-columns: 1fr; gap: 10px; }
+    .hero-carousel { height: 180px; border-radius: var(--radius-md); }
+    .hero-title { font-size: 20px; }
+    .hero-sub { font-size: 12px; margin-bottom: 12px; }
+    .hero-cta { padding: 8px 16px; font-size: 12px; }
+    .hero-content { max-width: 65%; }
+    .hero-hero-img { width: 120px; font-size: 60px; }
+    .hero-slide { padding: 24px 20px; }
+    .hero-dots { left: 20px; bottom: 10px; }
+
+    .hero-sidebar { flex-direction: row; gap: 8px; }
+    .hero-quick-card { padding: 12px 10px; }
+    .hqc-icon { font-size: 26px; }
+    .hqc-text .hqc-title { font-size: 12px; }
+    .hqc-text .hqc-sub { display: none; }
+    .hqc-text .hqc-cta { font-size: 11px; }
+
+    /* Why us */
+    .why-us { grid-template-columns: repeat(2, 1fr); padding: 14px; gap: 8px; }
+    .why-item { padding: 8px; gap: 8px; }
+    .why-icon { width: 36px; height: 36px; font-size: 18px; }
+    .why-text .why-title { font-size: 12px; }
+    .why-text .why-desc { font-size: 11px; }
+
+    /* Categories */
+    .categories-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .category-card { padding: 12px 6px; }
+    .cat-icon { font-size: 26px; margin-bottom: 5px; }
+    .cat-name { font-size: 10.5px; }
+    .cat-count { display: none; }
+
+    /* Offers strip */
+    .offers-strip {
+      padding: 12px 14px;
+      gap: 8px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      flex-wrap: nowrap;
+    }
+    .offers-strip::-webkit-scrollbar { display: none; }
+    .offers-label { display: none; }
+    .offer-pill { font-size: 12px; padding: 6px 12px; white-space: nowrap; }
+
+    /* Products */
+    .products-row { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .product-img { height: 120px; font-size: 55px; }
+    .product-body { padding: 10px; }
+    .product-name { font-size: 12px; }
+    .price-current { font-size: 15px; }
+    .price-original { font-size: 11px; }
+    .price-save { font-size: 10px; }
+
+    /* Banners */
+    .banners-grid { grid-template-columns: 1fr; gap: 10px; }
+    .banner-card { min-height: 100px; padding: 18px 20px; }
+    .banner-text .banner-title { font-size: 17px; }
+    .banner-icon { font-size: 44px; }
+
+    /* Conditions */
+    .conditions-row { gap: 6px; }
+    .condition-chip { padding: 6px 10px; font-size: 12px; }
+
+    /* Upload RX */
+    .upload-rx-section { flex-direction: column; align-items: flex-start; padding: 20px; gap: 14px; }
+    .upload-rx-icon { font-size: 42px; }
+    .upload-rx-text .upload-title { font-size: 18px; }
+    .upload-rx-text .upload-desc { font-size: 13px; }
+    .upload-steps { margin-left: 0; flex-direction: row; flex-wrap: wrap; gap: 8px; }
+
+    /* Stats */
+    .stats-strip { grid-template-columns: repeat(2, 1fr); padding: 20px; gap: 16px; }
+    .stat-item .stat-num { font-size: 26px; }
+
+    /* Testimonials */
+    .testimonials-grid { grid-template-columns: 1fr; gap: 10px; }
+
+    /* Blog */
+    .blog-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .blog-img { height: 100px; font-size: 38px; }
+    .blog-title { font-size: 12.5px; }
+
+    /* Section headers */
+    .section-title { font-size: 16px; }
+    .section-link { font-size: 12px; }
+
+    /* Footer */
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 20px; padding: 0 16px 28px; }
+    .footer-brand { grid-column: 1 / -1; }
+    footer { padding: 32px 0 0; }
+
+    /* Payment strip */
+    .payment-strip-inner { flex-wrap: wrap; gap: 8px; }
+
+    /* Bottom nav */
+    .bottom-nav { display: block; }
+
+    /* Cart sidebar full width on mobile */
+    .cart-sidebar { width: 100%; right: -100%; }
+    .cart-sidebar.open { right: 0; }
+
+    /* Toast position */
+    .toast { bottom: 76px; right: 12px; left: 12px; font-size: 13px; }
+  }
+
+  /* ===== SMALL MOBILE — up to 380px ===== */
+  @media (max-width: 380px) {
+    .categories-grid { grid-template-columns: repeat(4, 1fr); gap: 6px; }
+    .cat-icon { font-size: 22px; }
+    .cat-name { font-size: 9.5px; }
+    .products-row { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .hero-carousel { height: 160px; }
+    .hero-title { font-size: 17px; }
+    .hero-sidebar { gap: 6px; }
+    .blog-grid { grid-template-columns: 1fr; }
+    .stats-strip { grid-template-columns: 1fr 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -790,18 +1071,65 @@
 
     <!-- Actions -->
     <div class="header-actions">
-      <button class="header-btn btn-outline" onclick="showToast('Login feature coming soon!')">
+      <button class="header-btn btn-outline desktop-only" onclick="showToast('Login feature coming soon!')">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
         Sign In
       </button>
       <button class="header-btn btn-primary" onclick="toggleCart()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-        Cart
+        <span class="desktop-only">Cart</span>
         <div class="cart-badge" id="cart-count">0</div>
+      </button>
+      <!-- Hamburger -->
+      <button class="hamburger-btn mobile-only" onclick="toggleMobileMenu()" id="hamburgerBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Search Bar (shown below header on mobile) -->
+  <div class="mobile-search-bar">
+    <div class="search-bar" style="border-radius:50px;">
+      <input type="text" id="search-input-mobile" placeholder="Search medicines, vitamins..." autocomplete="off">
+      <button class="search-btn" onclick="handleSearchMobile()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
       </button>
     </div>
   </div>
 </header>
+
+<!-- Mobile Nav Drawer -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay" onclick="toggleMobileMenu()"></div>
+<div class="mobile-nav-drawer" id="mobileNavDrawer">
+  <div class="mobile-nav-header">
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-4H7l5-8v4h4l-5 8z"/></svg>
+      </div>
+      <div class="logo-text">
+        <span class="brand">PharmaShop</span>
+        <span class="tagline">Nepal</span>
+      </div>
+    </div>
+    <button class="mobile-nav-close" onclick="toggleMobileMenu()">✕</button>
+  </div>
+  <div class="mobile-nav-body">
+    <div class="mobile-nav-item" onclick="toggleMobileMenu(); showToast('Browsing Medicines...')">💊 Medicines</div>
+    <div class="mobile-nav-item" onclick="toggleMobileMenu(); showToast('Lab Tests coming soon!')">🔬 Lab Tests <span class="nav-badge">NEW</span></div>
+    <div class="mobile-nav-item" onclick="toggleMobileMenu(); showToast('Healthcare...')">🌿 Healthcare</div>
+    <div class="mobile-nav-item" onclick="toggleMobileMenu(); showToast('Wellness...')">💆 Wellness</div>
+    <div class="mobile-nav-item" onclick="toggleMobileMenu(); showToast('Baby Care...')">👶 Baby Care</div>
+    <div class="mobile-nav-item" onclick="toggleMobileMenu(); showToast('Fitness...')">🏋️ Fitness</div>
+    <div class="mobile-nav-item" onclick="toggleMobileMenu(); showToast('Devices...')">🩺 Devices</div>
+    <div class="mobile-nav-item" onclick="toggleMobileMenu(); showToast('Skin Care...')">🌸 Skin Care</div>
+    <div class="mobile-nav-item" style="color:var(--orange-600);" onclick="toggleMobileMenu(); showToast('Offers...')">🔖 Offers <span class="nav-badge" style="background:var(--orange-400);">HOT</span></div>
+    <div style="border-top:1px solid var(--gray-200); margin: 10px 0;"></div>
+    <div class="mobile-nav-item" onclick="toggleMobileMenu(); showToast('Login feature coming soon!')">
+      <svg style="width:16px;height:16px;margin-right:6px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      Sign In / Register
+    </div>
+  </div>
+</div>
 
 <!-- NAV -->
 <nav>
@@ -1289,6 +1617,33 @@
   </div>
 </footer>
 
+<!-- BOTTOM NAV BAR (Mobile) -->
+<div class="bottom-nav" id="bottomNav">
+  <div class="bottom-nav-inner">
+    <div class="bottom-nav-item active" onclick="setBottomNav(this); showToast('Home')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Home
+    </div>
+    <div class="bottom-nav-item" onclick="setBottomNav(this); showToast('Browsing Categories...')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      Categories
+    </div>
+    <div class="bottom-nav-item" onclick="setBottomNav(this); showToast('Uploading prescription...')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+      Rx Upload
+    </div>
+    <div class="bottom-nav-item bottom-nav-cart" onclick="setBottomNav(this); toggleCart()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <div class="bottom-cart-badge" id="bottom-cart-count">0</div>
+      Cart
+    </div>
+    <div class="bottom-nav-item" onclick="setBottomNav(this); showToast('Login feature coming soon!')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      Account
+    </div>
+  </div>
+</div>
+
 <!-- CART SIDEBAR -->
 <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
 <div class="cart-sidebar" id="cartSidebar">
@@ -1390,7 +1745,7 @@ function addToCart(id) {
   if (!p) return;
   if (!cart[id]) cart[id] = { ...p, qty: 0 };
   cart[id].qty++;
-  updateCartUI();
+  updateCartUIPatched();
   renderGrids();
   showToast(`${p.name.split(' ').slice(0,3).join(' ')} added to cart!`);
 }
@@ -1399,7 +1754,7 @@ function changeQty(id, delta) {
   if (!cart[id]) return;
   cart[id].qty += delta;
   if (cart[id].qty <= 0) delete cart[id];
-  updateCartUI();
+  updateCartUIPatched();
   renderGrids();
 }
 
@@ -1500,9 +1855,56 @@ document.querySelectorAll('.nav-item').forEach(item => {
   });
 });
 
+// Mobile nav drawer
+function toggleMobileMenu() {
+  const overlay = document.getElementById('mobileNavOverlay');
+  const drawer = document.getElementById('mobileNavDrawer');
+  const isOpen = drawer.classList.contains('open');
+  if (isOpen) {
+    drawer.classList.remove('open');
+    overlay.classList.remove('open');
+  } else {
+    drawer.classList.add('open');
+    overlay.classList.add('open');
+  }
+}
+
+// Bottom nav active state
+function setBottomNav(el) {
+  document.querySelectorAll('.bottom-nav-item').forEach(i => i.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// Mobile search
+function handleSearchMobile() {
+  const q = document.getElementById('search-input-mobile').value.trim();
+  if (q) showToast(`Searching for "${q}"...`);
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const mobileInput = document.getElementById('search-input-mobile');
+  if (mobileInput) {
+    mobileInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter') handleSearchMobile();
+    });
+  }
+});
+
+// Sync bottom cart badge
+const _origUpdateCartUI = updateCartUI;
+// Patch cart count to also update bottom nav badge
+const origUpdateCartUI = updateCartUI;
+function updateCartUIPatched() {
+  origUpdateCartUI();
+  const count = Object.values(cart).reduce((s, i) => s + i.qty, 0);
+  const badge = document.getElementById('bottom-cart-count');
+  if (badge) badge.textContent = count;
+}
+// Override
+window.updateCartUI = updateCartUIPatched;
+
 // Init
 renderGrids();
-updateCartUI();
+updateCartUIPatched();
 </script>
 </body>
 </html>
